@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-admob-techingcrew",
+  "version": "1.0.1",
+  "description": "AdMob plugin for Cordova multi-platform apps. Exposes Banner Ads, Interstitial Ads, and Rewarded Videos.",
+  "cordova": {
+    "id": "cordova-plugin-admob-techingcrew",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "npm": "undefined5.6.0",
+    "g": "undefined2.0.1"
+  },
+  "devDependencies": {
+    "g": "undefined2.0.1",
+    "npm": "undefined5.6.0"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "TechingCrew LLC",
+  "license": "MIT"
+}

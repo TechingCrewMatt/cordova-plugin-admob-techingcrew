@@ -1,0 +1,14 @@
+dependencies {
+
+}
+
+android {
+    repositories{
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+    dependencies {
+        compile 'com.google.android.gms:play-services-ads:+'
+    }
+}

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-admob-techingcrew" version="1.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>TechingCrew AdMob Plugin</name>
+    <platform name="android">    
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AdMob">
+                <param name="android-package" value="com.techingcrew.cordova.AdMob.AdMob" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" 
+                      android:name="com.google.android.gms.ads.AdActivity"
+                      android:theme="@android:style/Theme.Translucent" />
+          </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        </config-file>
+        <source-file src="src/android/AdMob.java" target-dir="src/com/techingcrew/cordova/plugin/AdMob" />
+        <framework src="src/android/AdMob.gradle" custom="true" type="gradleReference" target-dir="platforms/android/" />
+    </platform>
+    <js-module name="TechingCrew_AdMob_Plugin" src="www/TechingCrew_AdMob_Plugin.js">
+        <clobbers target="window.admob" />
+    </js-module>
+</plugin>
