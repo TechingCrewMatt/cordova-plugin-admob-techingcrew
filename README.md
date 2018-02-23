@@ -15,8 +15,8 @@ cordova plugin add cordova-plugin-add-admob-techingcrew
 admob.settings = {
     overlapWebView: false,
     bannerAutoShow: false,
-    bannerPosition: 'top',
-    bannerSize: 'SMART_BANNER',
+    bannerPosition: 'top', // or 'bottom'
+    bannerSize: 'SMART_BANNER', // see sizes at https://developers.google.com/admob/android/banner
     bannerID: 'ca-app-pub-3940256099942544/6300978111',
     interstitialID: 'ca-app-pub-3940256099942544/1033173712',
     rewardID: 'ca-app-pub-3940256099942544/5224354917',
@@ -24,11 +24,13 @@ admob.settings = {
     userID: 'xxx'
 };
 ```
+
 3. Initialize MobileAds:
 
 ```
 admob.init(successCallback, errorCallback);
 ```
+
 4. Build and show Banner Ads (Optional):
 
 ```
@@ -38,6 +40,7 @@ admob.createBanner(successCallback, errorCallback);
 ```
 admob.showBanner(successCallback, errorCallback);
 ```
+
 5. Build and show Interstitial Ads (Optional):
 ```
 admob.createInterstitial(successCallback, errorCallback);
@@ -46,11 +49,12 @@ admob.createInterstitial(successCallback, errorCallback);
 ```
 admob.showInterstitial(successCallback, errorCallback);
 ```
+
 6. Build and show Rewarded Videos (Optional):
 ```
 admob.createRewardedVideo(successCallback, errorCallback);
 ```
-You only need to call this function once. After "rewardedLoaded" is fired, you can show the video. After the ad is closed, a new video    will be requested automatically.
+You only need to call this function once. After "rewardedLoaded" is fired, you can show the video. After the video is closed, a new video will be requested automatically.
 ```
 admob.showRewardedVideo(successCallback, errorCallback);
 ```
