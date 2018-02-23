@@ -1,7 +1,11 @@
 {
   "name": "cordova-plugin-admob-techingcrew",
-  "version": "1.0.1",
+  "version": "1.1.2",
   "description": "AdMob plugin for Cordova multi-platform apps. Exposes Banner Ads, Interstitial Ads, and Rewarded Videos.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TechingCrewMatt/cordova-plugin-admob-techingcrew.git"
+  },
   "cordova": {
     "id": "cordova-plugin-admob-techingcrew",
     "platforms": [
@@ -18,7 +22,11 @@
   },
   "keywords": [
     "ecosystem:cordova",
-    "cordova-android"
+    "cordova-android",
+    "AdMob",
+    "Banner Ads",
+    "Interstitial Ads",
+    "Rewarded Videos"
   ],
   "author": "TechingCrew LLC",
   "license": "MIT"
