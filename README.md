@@ -1,5 +1,5 @@
 # cordova-plugin-admob-techingcrew
-AdMob plugin for Cordova multi-platform apps. Exposes Banner Ads, Interstitial Ads, and Rewarded Videos.
+AdMob plugin for Cordova multi-platform apps. Exposes Banner Ads, Interstitial Ads, and Rewarded Videos. No revenue sharing. Truly free plugin for an open-source platform. Imagine that.
 
 This plugin uses Gradle/Maven to pull the latest Google Play Services - Ads SDK. Tested on Samsung Galaxy S6 using Android 7.0 and project built using CLI 6.1.1 -iOS version is in development.
 
