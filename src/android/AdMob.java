@@ -162,7 +162,7 @@ public class AdMob extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
-                        AppState.interstitialAd = new InterstitialAd(cordova.getActivity());
+                        AppState.interstitialAd = new InterstitialAd(AppState.cordovaView.getContext());
                         AppState.interstitialAd.setAdUnitId(interstitialId);
                         AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();
