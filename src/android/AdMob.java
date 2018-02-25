@@ -15,9 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.FrameLayout;
 import android.view.View;
 import android.view.ViewGroup;
-import com.rjfun.cordova.ad.GenericAdPlugin;
 
-public class AdMob extends GenericAdPlugin {
+public class AdMob extends CordovaPlugin {
     private static final String TAG = "Admob-TechingCrew LLC";
     private String appID;
     private State AppState = new State();
@@ -163,7 +162,7 @@ public class AdMob extends GenericAdPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
-                        AppState.interstitialAd = new InterstitialAd(getActivity());
+                        AppState.interstitialAd = new InterstitialAd(cordova.getActivity());
                         AppState.interstitialAd.setAdUnitId(interstitialId);
                         AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();

@@ -18,7 +18,6 @@
         </config-file>
         <source-file src="src/android/AdMob.java" target-dir="src/com/techingcrew/cordova/plugin/AdMob" />
         <framework src="src/android/AdMob.gradle" custom="true" type="gradleReference" target-dir="platforms/android/" />
-        <dependency id="cordova-plugin-extension"/>
     </platform>
     <js-module name="TechingCrew_AdMob_Plugin" src="www/TechingCrew_AdMob_Plugin.js">
         <clobbers target="window.admob" />
