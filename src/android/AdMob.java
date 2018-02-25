@@ -1,4 +1,4 @@
-package com.techingcrew.cordova.AdMob;
+package com.techingcrew.cordova.plugin.AdMob;
 
 import org.apache.cordova.*; 
 import org.apache.cordova.engine.SystemWebView;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.FrameLayout;
 import android.view.View;
 import android.view.ViewGroup;
+import com.rjfun.cordova.ad.GenericAdPlugin;
 
 public class AdMob extends CordovaPlugin {
     private static final String TAG = "Admob-TechingCrew LLC";
@@ -162,7 +163,7 @@ public class AdMob extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
-                        AppState.interstitialAd = new InterstitialAd(AppState.cordovaView.getContext());
+                        AppState.interstitialAd = new InterstitialAd(getActivity());
                         AppState.interstitialAd.setAdUnitId(interstitialId);
                         AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();
@@ -245,7 +246,6 @@ public class AdMob extends CordovaPlugin {
                     LinearLayout newLayout = new LinearLayout(AppState.cordovaView.getContext());
                     SystemWebView cordovaSuper = (SystemWebView)AppState.cordovaView.getView();
                     ViewGroup cordovaParentGroup = (ViewGroup)((View)AppState.cordovaView.getView()).getParent();
-                    debugChildren(AppState.cordovaLinear);
                     LinearLayout.LayoutParams frameParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f);
                     ((FrameLayout)(AppState.cordovaLinear.getChildAt(1))).setLayoutParams(frameParam);
                     if(AppState.overlapView == true){
@@ -441,7 +441,6 @@ public class AdMob extends CordovaPlugin {
         private String interstitialId;
         private String userID;
         private CallbackContext callbackContext;
-
     }
 
     @Override
