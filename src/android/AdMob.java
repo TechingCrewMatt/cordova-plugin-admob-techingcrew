@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.rjfun.cordova.ad.GenericAdPlugin;
 
-public class AdMob extends CordovaPlugin {
+public class AdMob extends GenericAdPlugin {
     private static final String TAG = "Admob-TechingCrew LLC";
     private String appID;
     private State AppState = new State();
