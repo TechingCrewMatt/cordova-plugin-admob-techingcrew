@@ -162,14 +162,14 @@ public class AdMob extends CordovaPlugin {
             return true;
         }
         else if(action.equals("createInterstitial")){
-            final String interstitialId = args.getString(0);
+            AppState.interstitialId = args.getString(0);
             if(AppState.isInitialized == true){
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
                         AppState.interstitialAd = new InterstitialAd(cordova.getActivity());
-                        AppState.interstitialAd.setAdUnitId(interstitialId);
-                        AppState.interstitialAd.setImmersiveMode(true);
+                        AppState.interstitialAd.setAdUnitId(AppState.interstitialId);
+                        //AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();
                     }
                 });
@@ -313,7 +313,7 @@ public class AdMob extends CordovaPlugin {
     }
 
     private void loadInterstitial(){
-        AppState.interstitialAd.loadAd(new AdRequest.Builder().build());
+        
         AppState.interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -346,6 +346,12 @@ public class AdMob extends CordovaPlugin {
                 // Code to be executed when when the interstitial ad is closed.
                 fireJavascriptEvent("interstitialClosed", "");
                 loadInterstitial();
+            }
+        });
+        cordova.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AppState.interstitialAd.loadAd(new AdRequest.Builder().build());
             }
         });
     }
@@ -399,7 +405,12 @@ public class AdMob extends CordovaPlugin {
                     }
                 
                 });
-                AppState.rewardAd.loadAd(AppState.rewardedID, new AdRequest.Builder().build());
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AppState.rewardAd.loadAd(AppState.rewardedID, new AdRequest.Builder().build());
+                    }
+                }); 
             }
         });
     }
