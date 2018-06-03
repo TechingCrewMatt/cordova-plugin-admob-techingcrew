@@ -179,7 +179,7 @@ public class AdMob extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
-                        if(AppState.interstitialExists && AppState.interstitialAd.isLoaded()){
+                        if(AppState.interstitialExists == true && AppState.interstitialAd != null && AppState.interstitialAd.isLoaded()){
                             AppState.interstitialAd.show();
                         }
                         else{
