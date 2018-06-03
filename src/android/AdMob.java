@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.FrameLayout;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.Context;
 
 public class AdMob extends CordovaPlugin {
     private static final String TAG = "Admob-TechingCrew LLC";
@@ -28,7 +27,6 @@ public class AdMob extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         AppState.cordovaView = webView;
-        AppState.context = this.cordova.getActivity().getApplicationContext();
     }
 
     @Override
@@ -117,11 +115,8 @@ public class AdMob extends CordovaPlugin {
                     echoError("Banner Error: " + e.getMessage());
                 }
             }
-            else if(!AppState.isInitialized){
-                echoError("Use admob.init() before creating an ad unit.");
-            }
             else{
-                echoError("Banner already created.");
+                echoError("Use admob.init() before creating an ad unit");
             }
             return true;
         }
@@ -162,14 +157,14 @@ public class AdMob extends CordovaPlugin {
             return true;
         }
         else if(action.equals("createInterstitial")){
-            AppState.interstitialId = args.getString(0);
+            final String interstitialId = args.getString(0);
             if(AppState.isInitialized == true){
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
                         AppState.interstitialAd = new InterstitialAd(cordova.getActivity());
-                        AppState.interstitialAd.setAdUnitId(AppState.interstitialId);
-                        //AppState.interstitialAd.setImmersiveMode(true);
+                        AppState.interstitialAd.setAdUnitId(interstitialId);
+                        AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();
                     }
                 });
@@ -250,6 +245,7 @@ public class AdMob extends CordovaPlugin {
                     LinearLayout newLayout = new LinearLayout(AppState.cordovaView.getContext());
                     SystemWebView cordovaSuper = (SystemWebView)AppState.cordovaView.getView();
                     ViewGroup cordovaParentGroup = (ViewGroup)((View)AppState.cordovaView.getView()).getParent();
+                    debugChildren(AppState.cordovaLinear);
                     LinearLayout.LayoutParams frameParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f);
                     ((FrameLayout)(AppState.cordovaLinear.getChildAt(1))).setLayoutParams(frameParam);
                     if(AppState.overlapView == true){
@@ -313,7 +309,7 @@ public class AdMob extends CordovaPlugin {
     }
 
     private void loadInterstitial(){
-        
+        AppState.interstitialAd.loadAd(new AdRequest.Builder().build());
         AppState.interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -346,12 +342,6 @@ public class AdMob extends CordovaPlugin {
                 // Code to be executed when when the interstitial ad is closed.
                 fireJavascriptEvent("interstitialClosed", "");
                 loadInterstitial();
-            }
-        });
-        cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AppState.interstitialAd.loadAd(new AdRequest.Builder().build());
             }
         });
     }
@@ -405,12 +395,7 @@ public class AdMob extends CordovaPlugin {
                     }
                 
                 });
-                cordova.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        AppState.rewardAd.loadAd(AppState.rewardedID, new AdRequest.Builder().build());
-                    }
-                }); 
+                AppState.rewardAd.loadAd(AppState.rewardedID, new AdRequest.Builder().build());
             }
         });
     }
@@ -456,7 +441,7 @@ public class AdMob extends CordovaPlugin {
         private String interstitialId;
         private String userID;
         private CallbackContext callbackContext;
-        private Context context;
+
     }
 
     @Override
