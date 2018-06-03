@@ -1,4 +1,4 @@
-package com.techingcrew.cordova.plugin.AdMob;
+package com.techingcrew.cordova.plugin.admob;
 
 import org.apache.cordova.*; 
 import org.apache.cordova.engine.SystemWebView;
