@@ -6,7 +6,7 @@ This plugin uses Gradle/Maven to pull the latest Google Play Services - Ads SDK.
 1. Install the plugin:
 
 ```
-cordova plugin add cordova-plugin-add-admob-techingcrew
+cordova plugin add cordova-plugin-admob-techingcrew
 ```
 
 2. Adjust the AdMob settings in JavaScript. The plugin comes pre-loaded with test credentials.
