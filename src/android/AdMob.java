@@ -166,6 +166,7 @@ public class AdMob extends CordovaPlugin {
                         AppState.interstitialAd.setAdUnitId(interstitialId);
                         AppState.interstitialAd.setImmersiveMode(true);
                         loadInterstitial();
+                        AppState.interstitialExists = true;
                     }
                 });
             }
@@ -178,7 +179,7 @@ public class AdMob extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable(){
 			        @Override
 			        public void run() {
-                        if(AppState.interstitialAd.isLoaded()){
+                        if(AppState.interstitialExists && AppState.interstitialAd.isLoaded()){
                             AppState.interstitialAd.show();
                         }
                         else{
@@ -435,6 +436,7 @@ public class AdMob extends CordovaPlugin {
         private boolean showBanner = false;
         private boolean isBannerVisible = false;
         private boolean overlapView = false;
+        private boolean interstitialExists = false;
         private String bannerAdID;
         private String appID;
         private String rewardedID;
